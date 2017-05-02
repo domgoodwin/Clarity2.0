@@ -74,9 +74,16 @@
     $result = SendSQL($sql);
   }
   function CreateUser($username, $password, $roleID){
-    $sql  = "INSERT INTO users (Username, Password, Role_ID) VALUES (" . "\"" . $username . "\"" . "," . "\"" . $password . "\"" . "," . $roleID . ")";
-    echo "<br>" . $sql;
-    $result = SendSQL($sql);
+    $sqlQuery = "SELECT * FROM users WHERE username = \"" . $username . "\"";
+    $queryResult = SendSQL($sqlQuery);
+    if ($queryResult->num_rows==0){
+      $sql  = "INSERT INTO users (Username, Password, Role_ID) VALUES (" . "\"" . $username . "\"" . "," . "\"" . $password . "\"" . "," . $roleID . ")";
+      echo "<br>" . $sql;
+      $result = SendSQL($sql);
+    } else {
+      $output = "User already added";
+      echo $output;
+    }
   }
   function CreateBooking($projectID, $userID, $date, $hours){
     $sql  = "INSERT INTO bookings (Project_ID, User_ID, Date, Hours) VALUES (" . $projectID  . "," . $userID  . "," . "\"" . $date . "\"" . "," . $hours . ")";
