@@ -79,9 +79,24 @@
     $result = SendSQL($sql);
   }
   function CreateBooking($projectID, $userID, $date, $hours){
-    $sql  = "INSERT INTO bookings (Project_ID, User_ID, Date, Hours) VALUES (" . "\"" . $projectID . "\"" . "," . "\"" . $userID . "\"" . "," . "\"" . $date . "\"" . "," . $hours . ")";
+    $sql  = "INSERT INTO bookings (Project_ID, User_ID, Date, Hours) VALUES (" . $projectID  . "," . $userID  . "," . "\"" . $date . "\"" . "," . $hours . ")";
     echo "<br>" . $sql;
     $result = SendSQL($sql);
+  }
+  function GetDatalistProjects(){
+    $sql = "SELECT Project_ID, Project_Ref, Project_Name FROM projects" . $critera;
+    $output = "<datalist id=\"projects\">";
+    $result = SendSQL($sql);
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            $output .= "<option value=\"" . $row["Project_ID"] . "\">" . $row["Project_Ref"] . " - " . $row["Project_Name"] . "</option>";
+        }
+    } else {
+        $output .= "</datalist>";
+    }
+    $output .= "</datalist>";
+    echo $output;
   }
 
 
