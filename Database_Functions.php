@@ -98,6 +98,20 @@
     $output .= "</datalist>";
     echo $output;
   }
+  function GetWeeks($criteria){
+    $sql = "SELECT Monday_Date FROM weeks" . $critera;
+    $output = "<datalist id=\"weeks\">";
+    $result = SendSQL($sql);
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            $output .= "<option value=\"" . $row["Monday_Date"] . "\">";        }
+    } else {
+        $output .= "</datalist>";
+    }
+    $output .= "</datalist>";
+    echo $output;
+  }
 
 
 ?>
