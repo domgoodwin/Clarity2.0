@@ -24,7 +24,7 @@
   }
   // Reads all projects from project
   function GetProjects($criteria){
-    $sql = "SELECT Project_ID, Project_Ref, Project_Name FROM projects" . $critera;
+    $sql = "SELECT Project_ID, Project_Ref, Project_Name FROM projects" . $criteria;
     $output = "<table><tr><th>Project_Name</th><th>Project_Ref</th></tr>";
     $result = SendSQL($sql);
     if ($result->num_rows > 0) {
@@ -38,8 +38,8 @@
     $output .= "</table>";
     echo $output;
   }
-  function GetUsers($critera){
-    $sql = "SELECT User_ID, Username, Password, Role_ID FROM users" . $critera;
+  function GetUsers($criteria){
+    $sql = "SELECT User_ID, Username, Password, Role_ID FROM users" . $criteria;
     $output = "<table><tr><th>User ID</th><th>Username</th><th>Password</th><th>Role</th></tr>";
     $result = SendSQL($sql);
     if ($result->num_rows > 0) {
@@ -54,13 +54,14 @@
     echo $output;
   }
   function GetBookings($criteria){
-    $sql = "SELECT Booking_ID, Project_ID, User_ID, Date, Hours FROM bookings" . $critera;
-    $output = "<table><tr><th>Booking ID</th><th>Project_ID</th><th>User_ID</th><th>Hours</th></tr>";
+    $sql = "SELECT Booking_ID, Project_ID, User_ID, Date, Hours FROM bookings" . $criteria;
+    $output = "<table><tr><th>Booking ID</th><th>Project_ID</th><th>User_ID</th><th>Hours</th><th>Date</th></tr>";
     $result = SendSQL($sql);
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
-            $output .= "<tr>" . "<td>" . $row["Booking_ID"] . "</td>" . "<td>" . $row["Project_ID"] . "</td>" . "<td>" . $row["User_ID"] . "</td>" . "<td>" . $row["Hours"] . "</td>" . "</tr>";
+            $output .= "<tr>" . "<td>" . $row["Booking_ID"] . "</td>" . "<td>" . $row["Project_ID"] .
+             "</td>" . "<td>" . $row["User_ID"] . "</td>" . "<td>" . $row["Hours"] . "</td>" . "<td>" . $row["Date"] . "</td>"  . "</tr>";
         }
     } else {
         $output .= "<tr>No results</tr>";

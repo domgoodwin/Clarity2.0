@@ -36,6 +36,13 @@
       }
       return false;
   }
+  function setHoursDefault(){
+    document.getElementById("hr-mo").value = 7.5;
+    document.getElementById("hr-tu").value = 7.5;
+    document.getElementById("hr-we").value = 7.5;
+    document.getElementById("hr-th").value = 7.5;
+    document.getElementById("hr-fr").value = 7.5;
+  }
 </script>
 <?php
 include 'Database_Functions.php';
@@ -66,14 +73,15 @@ GetWeeks();
   Select Week: <input type="text" name="week" list="weeks" required> <br>
   User_ID: <input type="text" name="userID" required> <br>
   Projects <input type="text" name="project" list="projects"> <br>
-  Hours:  M<input type="number" name="hours[]" class="hourInput" step="0.5">
-          T<input type="number" name="hours[]" class="hourInput" step="0.5">
-          W<input type="number" name="hours[]" class="hourInput" step="0.5">
-          T<input type="number" name="hours[]" class="hourInput" step="0.5">
-          F<input type="number" name="hours[]" class="hourInput" step="0.5">
-          S<input type="number" name="hours[]" class="hourInput" step="0.5">
-          S<input type="number" name="hours[]" class="hourInput" step="0.5"> <br>
+  Hours:  M<input type="number" name="hours[]" class="hourInput" step="0.5" id="hr-mo">
+          T<input type="number" name="hours[]" class="hourInput" step="0.5" id="hr-tu">
+          W<input type="number" name="hours[]" class="hourInput" step="0.5" id="hr-we">
+          T<input type="number" name="hours[]" class="hourInput" step="0.5" id="hr-th">
+          F<input type="number" name="hours[]" class="hourInput" step="0.5" id="hr-fr">
+          S<input type="number" name="hours[]" class="hourInput" step="0.5" id="hr-sa">
+          S<input type="number" name="hours[]" class="hourInput" step="0.5" id="hr-su"> <br>
   <input type="submit" name="create" id="create" value="Create Booking" />
 </form>
+<input type="button" onclick="setHoursDefault()" value="PopulateHrs">
 </body>
 </html>
