@@ -11,6 +11,7 @@ BEGIN
 	SET @startDate = (SELECT Monday_Date FROM clarity2.weeks ORDER BY Monday_Date DESC LIMIT 1);
 	IF (@startDate IS NULL) THEN
 		INSERT INTO clarity2.weeks (Monday_Date) VALUES (@prevMonday);
+		SET @startDate = @prevMonday;
 	END IF;
 	WHILE @i < @amountToAdd DO
 		SET @startDate = DATE_ADD(@startDate, INTERVAL 7 DAY);
