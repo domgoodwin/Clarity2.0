@@ -74,6 +74,7 @@
     $result = SendSQL($sql);
   }
   function CreateUser($username, $password, $roleID){
+    // Check if user is added on table
     $sqlQuery = "SELECT * FROM users WHERE username = \"" . $username . "\"";
     $queryResult = SendSQL($sqlQuery);
     if ($queryResult->num_rows==0){
