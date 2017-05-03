@@ -6,6 +6,9 @@
 <body>
 <?php
 include 'Database_Functions.php';
+// if(isset($_SESSION['access']!=Admin)){ //if login in session is not set
+//     header("Location: login.php");
+// }
 GetProjects();
 echo "<br>";
 GetUsers();
