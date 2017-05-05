@@ -8,7 +8,7 @@ table {
   overflow: auto;
 }
 
-.hiddenTable, .hiddenTable th, .hiddenTable td {
+.hiddenTable, .hiddenTable th {
 	BORDER-TOP-STYLE: none;
 	BACKGROUND: none transparent scroll repeat 0% 0%;
 	BORDER-BOTTOM-STYLE: none;
@@ -21,8 +21,8 @@ table {
 
 .button {
 	border-style: none;
-	HEIGHT: 100%;
-	WIDTH: 100%;
+	HEIGHT: 30px;
+	WIDTH: 80px;
 	PADDING: 0px;
 	FILTER: none;
 	MARGIN: 0px;
@@ -33,8 +33,20 @@ table {
 	text-align: center;
 }
 
-button:hover {
-  FILTER: none;
+/********************* Inputs *********************/
+
+.button {
+	border-style: none;
+	HEIGHT: 30px;
+	WIDTH: 30px;
+	PADDING: 0px;
+	FILTER: none;
+	MARGIN: 0px;
+	ms-filter: none;
+	COLOR: #ffffff;
+	font-weight: bold;
+	display: inline-block;
+	text-align: center;
 }
 
 h1 {

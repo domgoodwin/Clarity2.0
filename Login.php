@@ -28,8 +28,11 @@ function test_input($data) {
   return $data;
 }
 
-Login($_SESSION["username"],$pw);
-GetRole($_SESSION["username"]);
+if(array_key_exists('Login', $_POST)){
+	Login($_SESSION["username"],$pw);
+	GetRole($_SESSION["username"]);
+}
+
 GetLogin($_SESSION["login"]);
 
 if(array_key_exists('logout', $_POST)){
@@ -42,13 +45,7 @@ if(array_key_exists('logout', $_POST)){
 <tr><td>Password: <input type="password" name="password" required> <span class="error">*</span></td></tr>
 </tbody>
 </table>
-<table>
-	<tbody>
-	<tr>
-<input type="submit" name="login" id="login" value="Login"></form>
-<form method="POST" name="logout" action"/Login.php"><input type="submit" name="logout" id="logout" value="Logout"></form>
-</tr>
-</tbody>
-</table>
+<input class=button type="submit" name="login" id="login" value="Login"></form>
+<form method="POST" name="logout" action"/Login.php"><input class=button type="submit" name="logout" id="logout" value="Logout"></form>
 </body>
 </html>
