@@ -1,11 +1,21 @@
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="Stylesheet.css">
+<link rel="stylesheet" type="text/css" href="style.css">
 <title>Timebooking login</title>
 </head>
 <body>
-<h1>Timebooking Login</h1>
-
+	<div class="main">
+		<h1>Timebooking Login</h1>
+			<form class="loginForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+				<div class="row"><label class="label">Username:</label><input class="input" type="text" name="username"> <span class="error"> *</span></div><br>
+				<div class="row"><label class="label">Password:</label><input class="input" type="password" name="password"> <span class="error"> *</span></div>
+			<div>
+				<input class="input" type="submit" name="login" id="login" value="Login">
+				<input class="input" type="submit" name="logout" id="logout" value="Logout">
+			</div>
+		</form>
+	</div>
+</body>
 <?php
 include 'Session.php';
 
@@ -35,17 +45,8 @@ if(array_key_exists('Login', $_POST)){
 
 GetLogin($_SESSION["login"]);
 
-if(array_key_exists('logout', $_POST)){
+if(array_key_exists('Logout', $_POST)){
 	Logout();
 }
 ?>
-<table class="hiddenTable">
-	<tbody><form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-<tr><td>Username: <input type="text" name="username" required> <span class="error">*</span></td></tr>
-<tr><td>Password: <input type="password" name="password" required> <span class="error">*</span></td></tr>
-</tbody>
-</table>
-<input class=button type="submit" name="login" id="login" value="Login"></form>
-<form method="POST" name="logout" action"/Login.php"><input class=button type="submit" name="logout" id="logout" value="Logout"></form>
-</body>
 </html>
