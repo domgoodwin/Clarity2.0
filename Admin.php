@@ -26,7 +26,7 @@ if( isset($_POST['submitUser'])){
   $Username = $_POST['Username'];
   $Password = $_POST['Password'];
   $Role = $_POST['Role'];
-  $result = CreateUser($Username, $Password, $Role);
+  $result = CreateNewUser($Username, $Password, $Role);
 }
 ?>
 
