@@ -14,8 +14,8 @@ function Login($UN, $PW){
         }
     } else {
         $output .= "<tr>No results</tr>";
-        echo $output
-		$_SESSION["login"] = false;
+        echo $output;
+		    $_SESSION["login"] = false;
     }
   }
 
