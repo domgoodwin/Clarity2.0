@@ -2,10 +2,15 @@
   border: 3px solid green;
   position: relative;
   margin: 15% 0 0 40%;
-  width: 400px; }
+  width: 800px; }
 
 h1 {
-  text-align: center; }
+  text-align: center;
+  font-size: 32px; }
+
+.header {
+  text-align: center;
+  font-size: 32px; }
 
 .loginForm {
   display: table;

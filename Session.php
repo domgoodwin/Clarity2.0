@@ -10,13 +10,15 @@ function Login($UN, $PW){
         // output data of each row
         while($row = $result->fetch_assoc()) {
 			$_SESSION["login"] = true;
+    echo "Welcome to the member's area, " . $_SESSION['username'] . "!" ;
         }
     } else {
         $output .= "<tr>No results</tr>";
+        echo $output
 		$_SESSION["login"] = false;
     }
   }
-  
+
 function GetRole($UN){
 	$sql = "SELECT User_ID, Username, Password, Role_ID FROM users WHERE Username=\"" . $UN ."\"";
 	$result = SendSQL($sql);
@@ -39,7 +41,7 @@ function GetLogin($login){
 			$userID = $row[User_ID];
 		}
 		} else {
-    echo "Please log in first to see this page.";
+      echo "Not logged in";
 	$userID = 0;
 	}
 }
