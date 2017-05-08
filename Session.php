@@ -5,7 +5,7 @@ include "Database_Functions.php";
 
 function Login($UN, $PW){
   $hashedPw = GetHashedPass($PW);
-    $sql = "SELECT User_ID, Username, Password, Role_ID FROM users WHERE Username=\"" . $UN ."\"" and "Passwd=\"" . $hashedPw ."\"";
+    $sql = "SELECT User_ID, Username, Passwd, Role_ID FROM users WHERE Username=\"" . $UN ."\"" and "Passwd=\"" . $hashedPw ."\"";
     $result = SendSQL($sql);
     if ($result->num_rows > 0) {
         // output data of each row
@@ -21,7 +21,7 @@ function Login($UN, $PW){
   }
 
 function GetRole($UN){
-	$sql = "SELECT User_ID, Username, Password, Role_ID FROM users WHERE Username=\"" . $UN ."\"";
+	$sql = "SELECT User_ID, Username, Role_ID FROM users WHERE Username=\"" . $UN ."\"";
 	$result = SendSQL($sql);
 	$row = $result->fetch_assoc();
 	if ($row["Role_ID"] == 1){
