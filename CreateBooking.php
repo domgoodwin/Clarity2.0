@@ -76,6 +76,7 @@ if(array_key_exists('create', $_POST)){
 }
 GetDatalistProjects();
 GetWeeks();
+echo $_SESSION["message"];
 ?>
 <form method="POST" name="booking" onsubmit="return validateForm()" action"/CreateBooking.php">
   Select Week: <input type="text" name="week" list="weeks" required> <br>

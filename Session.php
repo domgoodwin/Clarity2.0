@@ -1,6 +1,22 @@
 <?php
 session_start();
 
+// Check if logged in
+if($_SESSION['login']){
+  $_SESSION["message"] = "top if";
+  header( 'Location: CreateBooking.php' );
+} // if loading login and first try
+ else if(basename($_SERVER['PHP_SELF']) == "Login.php" && $_SESSION['external'] == false) {
+  $_SESSION["message"] = "Please login";
+} // check if already been redirected
+ else if($_SESSION['external']){
+
+} else {
+  $_SESSION['external'] = true;
+  $_SESSION["message"] = "<p class=\"error\">REDIRECT: Please login first</p>";
+  header( 'Location: Login.php' );
+}
+
 include "Database_Functions.php";
 function Login($UN, $PW){
   $hashedPw = GetHashedPass($PW);

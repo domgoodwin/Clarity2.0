@@ -27,5 +27,8 @@ h1 {
 .centre {
   text-align: center;
   padding-top: 10%; }
+.error {
+  color: red;
+}
 
 /*# sourceMappingURL=style.css.map */
