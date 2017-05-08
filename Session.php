@@ -4,7 +4,8 @@ session_start();
 include "Database_Functions.php";
 
 function Login($UN, $PW){
-    $sql = "SELECT User_ID, Username, Password, Role_ID FROM users WHERE Username=\"" . $UN ."\"" and "Password=\"" . $PW ."\"";
+  $hashedPw = GetHashedPass($PW);
+    $sql = "SELECT User_ID, Username, Password, Role_ID FROM users WHERE Username=\"" . $UN ."\"" and "Passwd=\"" . $hashedPw ."\"";
     $result = SendSQL($sql);
     if ($result->num_rows > 0) {
         // output data of each row
