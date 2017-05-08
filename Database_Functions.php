@@ -128,7 +128,7 @@
     $sqlQuery = "SELECT User_ID FROM users WHERE username = \"" . $username . "\"";
     $queryResult = SendSQL($sqlQuery);
     if ($queryResult->num_rows==0){
-      $sql  = "INSERT INTO users (Username, Password, Role_ID, Passwd) VALUES (" . "\"" . $username . "\"" . "," . "null" . "," . $roleID . ",\"" . $hashedPw . "\"" . ")";
+      $sql  = "INSERT INTO users (Username, Password, Role_ID, Passwd) VALUES (" . "\"" . $username . "\"" . "," . $roleID . ",\"" . $hashedPw . "\"" . ")";
       echo "<br>" . $sql;
       $result = SendSQL($sql);
     } else {
