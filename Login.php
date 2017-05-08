@@ -61,7 +61,7 @@
 			GetRole($_SESSION["username"]);
 		}
 
-		GetLogin($_SESSION["login"]);
+		GetLogin();
 
 		if(array_key_exists('logout', $_POST)){
 			Logout();

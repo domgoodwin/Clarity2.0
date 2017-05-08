@@ -6,6 +6,10 @@
   width: 50px;
 }
 </style>
+<?php
+  include 'Session.php';
+  GetLogin($_SESSION["role"]);
+ ?>
 </head>
 
 <body>
@@ -45,7 +49,6 @@
   }
 </script>
 <?php
-include 'Database_Functions.php';
 
 function CreateWeekBookings(){
   $projectID = $_POST["project"];
@@ -60,7 +63,12 @@ function CreateWeekBookings(){
     #echo ($projectID . $userID . $date->format('Y-m-d') . $value . "<br>");
     $date->add(new DateInterval('P1D'));
   }
-
+}
+function HideUserID(){
+  GetRole();
+  if($_SESSION["role"] == "Standard"){
+    echo " style=\"display: none\"";
+  }
 }
 
 if(array_key_exists('create', $_POST)){
@@ -71,7 +79,7 @@ GetWeeks();
 ?>
 <form method="POST" name="booking" onsubmit="return validateForm()" action"/CreateBooking.php">
   Select Week: <input type="text" name="week" list="weeks" required> <br>
-  User_ID: <input type="text" name="userID" required> <br>
+  <span <?php HideUserID(); ?>>User_ID: </span> <input type="text" name="userID" value=<?php echo "\""; GetUserID(); echo "\"";  HideUserID();?>" required> <br>
   Projects <input type="text" name="project" list="projects"> <br>
   Hours:  M<input type="number" name="hours[]" class="hourInput" step="0.5" id="hr-mo">
           T<input type="number" name="hours[]" class="hourInput" step="0.5" id="hr-tu">

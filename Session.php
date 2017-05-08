@@ -2,7 +2,6 @@
 session_start();
 
 include "Database_Functions.php";
-
 function Login($UN, $PW){
   $hashedPw = GetHashedPass($PW);
     $sql = "SELECT User_ID, Username, Passwd, Role_ID FROM users WHERE Username=\"" . $UN ."\"" and "Passwd=\"" . $hashedPw ."\"";
@@ -20,7 +19,8 @@ function Login($UN, $PW){
     }
   }
 
-function GetRole($UN){
+function GetRole(){
+  $UN = $_SESSION['username'];
 	$sql = "SELECT User_ID, Username, Role_ID FROM users WHERE Username=\"" . $UN ."\"";
 	$result = SendSQL($sql);
 	$row = $result->fetch_assoc();
@@ -33,18 +33,31 @@ function GetRole($UN){
     }
 }
  // Get user ID - returns USER ID if logged in - else 0 (not logged in)
-function GetLogin($login){
-	if (isset($login) && $login == true) {
-		$sql = "SELECT User_ID FROM users WHERE Username=\"" . $_SESSION['username'] ."\"";
-		$result = SendSQL($sql);
-		while($row = $result->fetch_assoc()) {
-			echo "Welcome to the member's area, " . $_SESSION['username'] . "!" ;
-			$userID = $row[User_ID];
-		}
-		} else {
+function GetLogin(){
+  $login = $_SESSION['login'];
+  if (isset($login) && $login == true) {
+	   $sql = "SELECT User_ID FROM users WHERE Username=\"" . $_SESSION['username'] ."\"";
+	   $result = SendSQL($sql);
+    	while($row = $result->fetch_assoc()) {
+    			echo "Welcome to the member's area, " . $_SESSION['username'] . "!" ;
+    			$userID = $row[User_ID];
+    	}
+	} else {
       echo "Not logged in";
-	$userID = 0;
+	    $userID = 0;
 	}
+}
+function GetUserID(){
+  $login = $_SESSION['login'];
+  if (isset($login) && $login == true) {
+     $sql = "SELECT User_ID FROM users WHERE Username=\"" . $_SESSION['username'] ."\"";
+     $result = SendSQL($sql);
+      while($row = $result->fetch_assoc()) {
+          echo $row[User_ID];
+      }
+  } else {
+      echo 0;
+  }
 }
 function Logout(){
 	$_SESSION["username"] = "";
