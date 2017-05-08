@@ -28,4 +28,12 @@ h1 {
   text-align: center;
   padding-top: 10%; }
 
+.table {
+  border-collapse: collapse;
+  width: 300px; }
+  .table .th, .table .td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 15px; }
+
 /*# sourceMappingURL=style.css.map */
