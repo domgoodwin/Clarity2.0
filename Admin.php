@@ -5,7 +5,7 @@
 
 <body>
 <?php
-include 'Database_Functions.php';
+include 'Session.php';
 // if(isset($_SESSION['access']!=Admin)){ //if login in session is not set
 //     header("Location: login.php");
 // }

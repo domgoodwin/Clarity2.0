@@ -2,9 +2,11 @@
 session_start();
 
 // Check if logged in
-if($_SESSION['login']){
+if(basename($_SERVER['PHP_SELF']) == "UserHome.php" && $_SESSION['login']){
+
+} else if($_SESSION['login']){
   $_SESSION["message"] = "top if";
-  header( 'Location: CreateBooking.php' );
+  header( 'Location: UserHome.php' );
 } // if loading login and first try
  else if(basename($_SERVER['PHP_SELF']) == "Login.php" && $_SESSION['external'] == false) {
   $_SESSION["message"] = "Please login";
@@ -25,8 +27,9 @@ function Login($UN, $PW){
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
-			$_SESSION["login"] = true;
-    echo "Welcome to the member's area, " . $_SESSION['username'] . "!" ;
+			       $_SESSION["login"] = true;
+             GetRole();
+             header('Location: UserHome.php') ;
         }
     } else {
         $output .= "<tr>No results</tr>";
@@ -43,7 +46,8 @@ function GetRole(){
 	if ($row["Role_ID"] == 1){
 		$output .= "<tr>Standard user</tr>";
 		$_SESSION["role"] = Standard;
-    } elseif ($row["Role_ID"] == 2){
+    $_SESSION['username'] = $row["Username"];
+  } elseif ($row["Role_ID"] == 2){
         $output .= "<tr>Admin user</tr>";
 		$_SESSION["role"] = Admin;
     }
@@ -69,10 +73,10 @@ function GetUserID(){
      $sql = "SELECT User_ID FROM users WHERE Username=\"" . $_SESSION['username'] ."\"";
      $result = SendSQL($sql);
       while($row = $result->fetch_assoc()) {
-          echo $row[User_ID];
+          return $row[User_ID];
       }
   } else {
-      echo 0;
+      return 0;
   }
 }
 function Logout(){

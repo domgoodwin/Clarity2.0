@@ -27,10 +27,7 @@
 
 	if(array_key_exists('login', $_POST)){
 		Login($_SESSION["username"],$pw);
-		GetRole($_SESSION["username"]);
 	}
-
-	GetLogin();
 
 	if(array_key_exists('logout', $_POST)){
 		Logout();
