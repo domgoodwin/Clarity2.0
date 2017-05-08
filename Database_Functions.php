@@ -75,6 +75,7 @@
     $result = SendSQL($sql);
   }
   function CreateUser($username, $password, $roleID){
+    // Check if user is added on table
     $sqlQuery = "SELECT * FROM users WHERE username = \"" . $username . "\"";
     $queryResult = SendSQL($sqlQuery);
     if ($queryResult->num_rows==0){
@@ -119,6 +120,25 @@
     }
     $output .= "</datalist>";
     echo $output;
+  }
+  function CreateNewUser($username, $passwd, $roleID){
+    $hashedPw = GetHashedPass($password);
+    // Check if user is added on table
+    // DG Could use getuser function implemented
+    $sqlQuery = "SELECT User_ID FROM users WHERE username = \"" . $username . "\"";
+    $queryResult = SendSQL($sqlQuery);
+    if ($queryResult->num_rows==0){
+      $sql  = "INSERT INTO users (Username, Password, Role_ID, Passwd) VALUES (" . "\"" . $username . "\"" . "," . "null" . "," . $roleID . ",\"" . $hashedPw . "\"" . ")";
+      echo "<br>" . $sql;
+      $result = SendSQL($sql);
+    } else {
+      $output = "User already added";
+      echo $output;
+    }
+  }
+
+  function GetHashedPass($passwd){
+    return hash('sha512', $passwd);
   }
 
 

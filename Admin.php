@@ -6,6 +6,9 @@
 <body>
 <?php
 include 'Database_Functions.php';
+// if(isset($_SESSION['access']!=Admin)){ //if login in session is not set
+//     header("Location: login.php");
+// }
 GetProjects();
 echo "<br>";
 GetUsers();
@@ -23,7 +26,7 @@ if( isset($_POST['submitUser'])){
   $Username = $_POST['Username'];
   $Password = $_POST['Password'];
   $Role = $_POST['Role'];
-  $result = CreateUser($Username, $Password, $Role);
+  $result = CreateNewUser($Username, $Password, $Role);
 }
 ?>
 

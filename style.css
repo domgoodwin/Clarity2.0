@@ -1,0 +1,26 @@
+.main {
+  border: 3px solid green;
+  position: relative;
+  margin: 15% 0 0 40%;
+  width: 400px; }
+
+h1 {
+  text-align: center; }
+
+.loginForm {
+  display: table;
+  text-align: center; }
+  .loginForm .row {
+    display: table-row; }
+
+.label {
+  display: table-cell; }
+
+.input .button {
+  display: inline-block; }
+
+.centre {
+  text-align: center;
+  padding-top: 10%; }
+
+/*# sourceMappingURL=style.css.map */
