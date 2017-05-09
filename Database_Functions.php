@@ -55,7 +55,7 @@
   }
   function GetBookings($criteria){
     $sql = "SELECT Booking_ID, Project_ID, User_ID, Date, Hours FROM bookings" . $criteria;
-    $output = "<div class='large-4 columns'><table class='table'><tr><th class='th'>Booking ID</th><th class='th'>Project_ID</th><th class='th'>User_ID</th><th class='th'>Hours</th><th class='th'>Date</th></tr>";
+    $output = "<div class='large-12 columns'><table class='table'><tr><th class='th'>Booking ID</th><th class='th'>Project_ID</th><th class='th'>User_ID</th><th class='th'>Hours</th><th class='th'>Date</th></tr>";
     $result = SendSQL($sql);
     if ($result->num_rows > 0) {
         // output data of each row

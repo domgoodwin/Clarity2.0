@@ -2,7 +2,7 @@
 <head>
 	<link rel="stylesheet" href="css/foundation.css">
 	<link rel="stylesheet" href="css/app.css">
-<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
 <title>Timebooking login</title>
 </head>
 <body>

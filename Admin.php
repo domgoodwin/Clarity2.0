@@ -1,9 +1,27 @@
 <html>
 <head>
+  <link rel="stylesheet" href="css/foundation.css">
+	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
 <title>Admin Panel</title>
 </head>
 
 <body>
+  <div class="row">
+      <div class="large-12 columns">
+        <div class="callout">
+          <div class="row">
+            <div class="large-12 columns">
+              <h1>Admin Control</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-4 large-push-4 columns">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 <?php
 include 'Session.php';
 // if(isset($_SESSION['access']!=Admin)){ //if login in session is not set
